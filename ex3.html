@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    section {
+      margin-top: 20px;
+    }
+    .resultado {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Conversores</h1>
+
+  <!-- Questão 1: Conversor de Distância -->
+  <button onclick="converterDistancia()">Converter Distância</button>
+  <section id="resultadoDistancia"></section>
+
+  <!-- Questão 2: Conversor de Temperatura -->
+  <button onclick="converterTemperatura()">Converter Temperatura</button>
+  <section id="resultadoTemperatura"></section>
+
+  <script>
+    // Questão 1
+    function converterDistancia() {
+      let metros = prompt("Digite a distância em metros:");
+      metros = parseFloat(metros);
+
+      if (isNaN(metros)) {
+        alert("Por favor, insira um número válido.");
+        return;
+      }
+
+      const km = metros / 1000;
+      const hm = metros / 100;
+      const dam = metros / 10;
+      const dm = metros * 10;
+      const cm = metros * 100;
+      const mm = metros * 1000;
+
+      const resultado = `
+        <div class="resultado">
+          <strong>A distância de ${metros} metro(s) corresponde a:</strong><br>
+          ${km} km<br>
+          ${hm} hm<br>
+          ${dam} dam<br>
+          ${dm} dm<br>
+          ${cm} cm<br>
+          ${mm} mm
+        </div>
+      `;
+
+      document.getElementById("resultadoDistancia").innerHTML = resultado;
+    }
+
+    // Questão 2
+    function converterTemperatura() {
+      let celsius = prompt("Digite a temperatura em graus Celsius (°C):");
+      celsius = parseFloat(celsius);
+
+      if (isNaN(celsius)) {
+        alert("Por favor, insira uma temperatura válida.");
+        return;
+      }
+
+      const kelvin = celsius + 273.15;
+      const fahrenheit = (celsius * 9/5) + 32;
+
+      const resultado = `
+        <div class="resultado">
+          <strong>A temperatura de ${celsius}°C corresponde a:</strong><br>
+          ${kelvin.toFixed(2)} K<br>
+          ${fahrenheit.toFixed(2)} °F
+        </div>
+      `;
+
+      document.getElementById("resultadoTemperatura").innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>
